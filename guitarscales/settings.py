@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'i)md)l@q=t=!s(7d(9@mc7w7ln+39-o6qxopoyotzat2@((79a'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'guitarscales',
-        'USER': os.environ['GUITARSCALES_DB_USER'],
-        'PASSWORD': os.environ['GUITARSCALES_DB_PASSWORD'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
