@@ -25,3 +25,6 @@ class Position(models.Model):
     def __str__(self):
         return u"%s Position: %d : %d" % (str(self.shape),
             self.fret, self.string)
+
+    class Meta:
+        ordering = ["string","fret"]

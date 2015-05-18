@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      body   {
+        font-family: Arial, sanserif;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      table {width: 100%; margin-top: 50px;}
+      td {
+        border: 2px solid #ccc;
+      }
+      tr:last-child td{
+        border: none
+      }
+      td {
+        height: 40px;
+        position: relative;
+      }
+      div {
+        width: 25px;
+        height: 25px;
+        background-color: #ff0000;
+        color: #fff;
+        border-radius: 50%;
+        border: solid 2px #D00000;
+        text-align: center;
+        line-height: 28px;
+        position: absolute;
+        top: -15px;
+        right: 5px;
+        font-size: 14px;
+        z-index: 2;
+      }
+      .cor2  {
+        background-color: #ffa500;
+        border-color: #D44B00;
+      }
+      .cor3  {
+        width: 60px;
+        border-radius: 5px;
+        border: solid 2px #000!important;
+        background-color: #ccc;
+        border-color: #D44B00;
+        right: auto!important;
+        left: 50%;
+        margin-left: -30px;
+        z-index: 1;
+        color: #000;
+      }
+
+    </style>
+    <title>{{ scale.name }}</title>
+  </head>
+  <body>
+    <h1>{{ scale.name }}</h1>
+    <table>
+    	<tbody>
+        {% for shape in scale.shape_set.all %}
+            {% for string in "123456" %}
+            <tr>
+              {% for position in shape.position_set.all %}
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+              <td><div class="cor1">1</div></td>
+              <td><div class="cor2">1</div></td>
+        	  </tr>
+            {% endfor %}
+          <tr>
+        		<td><div class="cor1">6</div><div class="cor3">1ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">2ª</div></td>
+            <td><div class="cor1">6</div><div class="cor3">3ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">4ª</div></td>
+            <td><div class="cor1">6</div><div class="cor3">5ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">6ª</div></td>
+            <td><div class="cor1">6</div><div class="cor3">7ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">8ª</div></td>
+            <td><div class="cor1">6</div><div class="cor3">9ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">10ª</div></td>
+            <td><div class="cor1">6</div><div class="cor3">11ª</div></td>
+            <td><div class="cor2">6</div><div class="cor3">12ª</div></td>
+        	</tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+</body></html>

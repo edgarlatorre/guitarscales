@@ -1,5 +1,7 @@
 from django.test import TestCase
+from django.test import Client
 from scales.models import Scale, Shape, Position
+from scales.views import ScaleDetail
 
 class ScaleTest(TestCase):
     def test_scale__representation(self):
@@ -53,3 +55,19 @@ class PositionTest(TestCase):
             position.fret, position.string)
 
         self.assertEquals(expected, str(position))
+
+class ScaleDetail(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_index_return_200(self):
+        scale = Scale()
+        scale.name = "Pentatonic"
+        scale.key = "E"
+        scale.save()
+        response = self.client.get('/scales/{0}'.format(scale.id))
+        self.assertEquals(200, response.status_code)
+    #
+    # def test_index_template(self):
+    #     response = self.client.get('/')
+    #     self.assertTemplateUsed(response, 'index.html')

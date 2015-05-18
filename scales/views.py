@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
+from django.http import HttpResponse
+from scales.models import Scale
 
-# Create your views here.
+class ScaleDetail(DetailView):
+    model = Scale
+    template_name = 'scales/detail.html'
