@@ -28,3 +28,18 @@ class Position(models.Model):
 
     class Meta:
         ordering = ["string","fret"]
+
+# class NeckCreator(object):
+#     @staticmethod
+#     def draw(shapes):
+#         for shape in shapes:
+#             shapes_arr = []
+#             strings = []
+#             for string in range(1, 7):
+#                 positions = []
+#
+#                 for fret in range(1, 15):
+#                     for position in shape.position_set.all():
+#
+#
+#                 strings[string] = positions

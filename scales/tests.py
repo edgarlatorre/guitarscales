@@ -65,6 +65,7 @@ class ScaleDetail(TestCase):
         scale.name = "Pentatonic"
         scale.key = "E"
         scale.save()
+
         response = self.client.get('/scales/{0}'.format(scale.id))
         self.assertEquals(200, response.status_code)
     #
