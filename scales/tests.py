@@ -17,16 +17,56 @@ class ShapeTest(TestCase):
         self.scale.key = "E"
         self.scale.name = "Minor Pentatonic"
         self.scale.save()
+        
+        self.shape = Shape()
+        self.shape.number = 1
+        self.shape.first_fret = 1
+        self.shape.scale = self.scale
+        self.shape.save()
 
     def tearDown(self):
         Scale.objects.all().delete()
+        Shape.objects.all().delete()
+        Position.objects.all().delete()
 
     def test_shape_string_representation(self):
-        shape = Shape()
-        shape.number = 1
-        shape.scale = self.scale
+        self.assertEquals("%s %s" % (str(self.scale), self.shape.number), str(self.shape))
 
-        self.assertEquals("%s %s" % (str(self.scale), shape.number), str(shape))
+    def test_to_table_length(self):
+        self.assertEquals(6, len(self.shape.to_table()))
+
+    def test_to_table_fret_length(self):
+        self.assertEquals(7, len(self.shape.to_table()[0]))
+
+
+    def test_to_table_default_values(self):
+        expected = [
+            [None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None],
+            [None, None, None, None, None, None, None]
+        ]
+
+        self.assertEquals(expected, self.shape.to_table())
+        
+    def test_to_table_fret_default_values(self):
+        self.assertEquals([None, None, None, None, None, None, None], self.shape.to_table()[0])
+
+    def test_to_table_with_position_on_string_one_fret_one(self):
+        position = Position()
+        position.fret = 1
+        position.string = 1
+        position.finger = 1
+        position.is_root = True
+        position.shape = self.shape
+        position.save()
+        
+        self.assertEquals(position, self.shape.to_table()[0][0])
+
+
+
 
 class PositionTest(TestCase):
     def setUp(self):

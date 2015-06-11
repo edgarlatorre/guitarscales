@@ -12,6 +12,15 @@ class Shape(models.Model):
     first_fret = models.IntegerField()
     scale = models.ForeignKey(Scale)
 
+    def to_table(self):
+        table = [[None for x in range(7)] for x in range(6)]
+
+        for position in self.position_set.all():
+            table[position.string - 1][position.fret - 1] = position
+
+        return table
+
+
     def __str__(self):
         return u"%s %s" % (str(self.scale), self.number)
 
