@@ -22,6 +22,12 @@ class Position(models.Model):
     is_root = models.BooleanField()
     shape = models.ForeignKey(Shape)
 
+    def get_css_class(self):
+        if self.is_root:
+            return 'root'
+
+        return 'note'
+
     def __str__(self):
         return u"%s Position: %d : %d" % (str(self.shape),
             self.fret, self.string)

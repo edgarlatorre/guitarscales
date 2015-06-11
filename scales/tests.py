@@ -40,6 +40,8 @@ class PositionTest(TestCase):
         self.shape.first_fret = 1
         self.shape.scale = self.scale
         self.shape.save()
+        
+        self.position = Position()
 
     def tearDown(self):
         Scale.objects.all().delete()
@@ -55,6 +57,15 @@ class PositionTest(TestCase):
             position.fret, position.string)
 
         self.assertEquals(expected, str(position))
+    
+    def test_get_css_class_returns_root(self):
+        self.position.is_root = True;
+        self.assertEquals('root', self.position.get_css_class())
+
+    def test_get_css_class_returns_note(self):
+        self.position.is_root = False
+        self.assertEquals('note', self.position.get_css_class())
+
 
 class ScaleDetail(TestCase):
     def setUp(self):
