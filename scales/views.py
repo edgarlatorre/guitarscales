@@ -13,10 +13,10 @@ class ScaleDetail(DetailView):
         necks = []
 
         for shape in scale.shape_set.all():
-            neck = [[0 for x in range(6)] for x in range(12)]
+            neck = [[0 for x in range(12)] for x in range(6)]
 
             for position in shape.position_set.all():
-                neck[position.fret - 1][position.string - 1] = 1
+                neck[position.string - 1][position.fret - 1] = 1
 
             necks.append(neck)
 

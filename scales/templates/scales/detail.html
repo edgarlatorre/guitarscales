@@ -63,12 +63,16 @@
     <table>
     	<tbody>
         {% for neck in necks %}
-          {% for fret in neck %}
-            {% for string in fret %}
-              <tr>
-                <td><div class="cor1">6</div><div class="cor3">1ª</div></td>
-              </tr>
+          {% for string in neck %}
+            <tr>
+            {% for fret in string %}
+              <td>
+              {% if fret == 1%}
+                <div class="cor1">6</div>
+              {% endif %}
+              </td>
             {% endfor %}
+            </tr>
           {% endfor %}
 <!--           <tr>
             <td><div class="cor1">6</div><div class="cor3">1ª</div></td>
