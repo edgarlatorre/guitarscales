@@ -16,7 +16,7 @@ class ScaleDetail(DetailView):
             neck = [[0 for x in range(12)] for x in range(6)]
 
             for position in shape.position_set.all():
-                neck[position.string - 1][position.fret - 1] = 1
+                neck[position.string - 1][position.fret - 1] = position
 
             necks.append(neck)
 
