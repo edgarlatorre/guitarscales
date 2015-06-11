@@ -1,0 +1,61 @@
+/* BODY */
+body   {
+  font-family: Arial, sanserif;
+}
+
+/* NECK */
+
+table {
+  border-collapse: collapse;
+}
+
+table {width: 100%; margin-top: 50px;}
+
+td {
+  border: 2px solid #ccc;
+}
+
+tr:last-child td{
+  border: none
+}
+
+td {
+  height: 40px;
+  position: relative;
+}
+
+div {
+  width: 25px;
+  height: 25px;
+  background-color: #ff0000;
+  color: #fff;
+  border-radius: 50%;
+  border: solid 2px #D00000;
+  text-align: center;
+  line-height: 28px;
+  position: absolute;
+  top: -15px;
+  right: 5px;
+  font-size: 14px;
+  z-index: 2;
+}
+
+/* NOTES */
+
+.note  {
+  background-color: #ffa500;
+  border-color: #D44B00;
+}
+
+.fret  {
+  width: 60px;
+  border-radius: 5px;
+  border: solid 2px #000!important;
+  background-color: #ccc;
+  border-color: #D44B00;
+  right: auto!important;
+  left: 50%;
+  margin-left: -30px;
+  z-index: 1;
+  color: #000;
+}
