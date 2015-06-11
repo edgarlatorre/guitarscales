@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <title>{{ scale.name }}</title>
+    <title>{{ scale.key }} {{ scale.name }}</title>
   </head>
   <body>
-    <h1>{{ scale.name }}</h1>
-    <table>
-    	<tbody>
+    <h1>{{ scale.key }} {{ scale.name }}</h1>
         {% for neck in necks %}
+        <table>
+            <tbody>
           {% for string in neck %}
             <tr>
             {% for fret in string %}
@@ -24,8 +24,8 @@
             {% endfor %}
             </tr>
           {% endfor %}
+          </tbody>
+        </table>
         {% endfor %}
-      </tbody>
-    </table>
   </body>
 </html>
