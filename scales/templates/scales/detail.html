@@ -10,15 +10,15 @@
   </head>
   <body>
     <h1>{{ scale.key }} {{ scale.name }}</h1>
-        {% for neck in necks %}
-        <p>Shape {{ forloop.counter }}</p>
+        {% for shape in scale.shape_set.all %}
+        <p>Shape {{ shape.number }}</p>
         <table>
-            <tbody>
-          {% for string in neck %}
+          <tbody>
+          {% for string in shape.to_table %}
             <tr>
             {% for fret in string %}
               <td>
-              {% if fret != 0 %}
+              {% if fret %}
                 <div class="{{ fret.get_css_class }}">{{ fret.finger }}</div>
               {% endif %}
               </td>

@@ -36,23 +36,23 @@ class ShapeTest(TestCase):
         self.assertEquals(6, len(self.shape.to_table()))
 
     def test_to_table_fret_length(self):
-        self.assertEquals(7, len(self.shape.to_table()[0]))
+        self.assertEquals(16, len(self.shape.to_table()[0]))
 
 
     def test_to_table_default_values(self):
         expected = [
-            [None, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None],
-            [None, None, None, None, None, None, None]
+            [None for i in range(16)],
+            [None for i in range(16)],
+            [None for i in range(16)],
+            [None for i in range(16)],
+            [None for i in range(16)],
+            [None for i in range(16)]
         ]
 
         self.assertEquals(expected, self.shape.to_table())
         
     def test_to_table_fret_default_values(self):
-        self.assertEquals([None, None, None, None, None, None, None], self.shape.to_table()[0])
+        self.assertEquals([None for i in range(16)], self.shape.to_table()[0])
 
     def test_to_table_with_position_on_string_one_fret_one(self):
         position = Position()
@@ -118,7 +118,12 @@ class ScaleDetail(TestCase):
     def test_detail_return_200(self):
         response = self.client.get('/scales/{0}/'.format(self.scale.id))
         self.assertEquals(200, response.status_code)
-    #
+
     def test_detail_template(self):
         response = self.client.get('/scales/{0}/'.format(self.scale.id))
         self.assertTemplateUsed(response, 'scales/detail.html')
+
+    def test_detail_return_404(self):
+        response = self.client.get('/scales/0/')
+        self.assertEquals(404, response.status_code)
+
