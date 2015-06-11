@@ -11,6 +11,7 @@
   <body>
     <h1>{{ scale.key }} {{ scale.name }}</h1>
         {% for neck in necks %}
+        <p>Shape {{ forloop.counter }}</p>
         <table>
             <tbody>
           {% for string in neck %}
@@ -18,7 +19,7 @@
             {% for fret in string %}
               <td>
               {% if fret != 0 %}
-              <div class="{{ fret.get_css_class }}">{{ fret.finger }}</div>
+                <div class="{{ fret.get_css_class }}">{{ fret.finger }}</div>
               {% endif %}
               </td>
             {% endfor %}
