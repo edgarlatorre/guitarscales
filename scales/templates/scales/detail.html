@@ -38,7 +38,7 @@
         font-size: 14px;
         z-index: 2;
       }
-      .cor2  {
+      .note  {
         background-color: #ffa500;
         border-color: #D44B00;
       }
@@ -67,8 +67,8 @@
             <tr>
             {% for fret in string %}
               <td>
-              {% if fret == 1%}
-                <div class="cor1">6</div>
+              {% if fret != 0 %}
+              <div class="{{ fret.get_css_class }}">{{ fret.finger }}</div>
               {% endif %}
               </td>
             {% endfor %}
