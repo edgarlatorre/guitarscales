@@ -70,16 +70,15 @@ class PositionTest(TestCase):
 class ScaleDetail(TestCase):
     def setUp(self):
         self.client = Client()
+        self.scale = Scale()
+        self.scale.name = "Pentatonic"
+        self.scale.key = "E"
+        self.scale.save()
 
-    def test_index_return_200(self):
-        scale = Scale()
-        scale.name = "Pentatonic"
-        scale.key = "E"
-        scale.save()
-
-        response = self.client.get('/scales/{0}'.format(scale.id))
+    def test_detail_return_200(self):
+        response = self.client.get('/scales/{0}/'.format(self.scale.id))
         self.assertEquals(200, response.status_code)
     #
-    # def test_index_template(self):
-    #     response = self.client.get('/')
-    #     self.assertTemplateUsed(response, 'index.html')
+    def test_detail_template(self):
+        response = self.client.get('/scales/{0}/'.format(self.scale.id))
+        self.assertTemplateUsed(response, 'scales/detail.html')

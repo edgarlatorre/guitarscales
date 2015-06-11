@@ -9,7 +9,7 @@ class ScaleDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ScaleDetail, self).get_context_data(**kwargs)
 
-        scale = Scale.objects.get(pk=2)
+        scale = Scale.objects.get(pk=self.kwargs.get('pk', None))
         necks = []
 
         for shape in scale.shape_set.all():
