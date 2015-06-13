@@ -20,6 +20,11 @@ class ScaleTest(TestCase):
     def test_save_generates_slug(self):
         self.assertEquals("e-minor-pentatonic", self.scale.slug)
 
+    def test_save_generates_unique_slug(self):
+        self.scale.pk = 0
+        self.assertFalse(self.scale.save())
+
+
 class ShapeTest(TestCase):
     def setUp(self):
         self.scale = Scale()
