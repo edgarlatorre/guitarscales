@@ -4,12 +4,21 @@ from scales.models import Scale, Shape, Position
 from scales.views import ScaleDetail
 
 class ScaleTest(TestCase):
-    def test_scale__representation(self):
-        scale = Scale()
-        scale.key = "E"
-        scale.name = "Minor Pentatonic"
+    def setUp(self):
+        self.scale = Scale()
+        self.scale.key = "E"
+        self.scale.name = "Minor Pentatonic"
+        self.scale.save()
 
-        self.assertEquals("%s %s" % (scale.key, scale.name), str(scale))
+    def tearDown(self):
+        Scale.objects.all().delete()
+
+    def test_scale__representation(self):
+        self.assertEquals("%s %s" % (self.scale.key,
+            self.scale.name), str(self.scale))
+
+    def test_save_generates_slug(self):
+        self.assertEquals("e-minor-pentatonic", self.scale.slug)
 
 class ShapeTest(TestCase):
     def setUp(self):

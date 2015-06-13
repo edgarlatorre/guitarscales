@@ -1,8 +1,14 @@
 from django.db import models
+from django.utils.text import slugify
 
 class Scale(models.Model):
     key = models.CharField(max_length=2)
     name = models.CharField(max_length=30)
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify("{0}-{1}".format(self.key, self.name))
+        super(Scale, self).save(*args, **kwargs)
 
     def __str__(self):
         return u"%s %s" % (self.key, self.name)
