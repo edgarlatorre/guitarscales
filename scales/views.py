@@ -8,4 +8,4 @@ class ScaleDetail(DetailView):
     template_name = 'scales/detail.html'
 
     def get_object(self):
-        return get_object_or_404(Scale, pk=self.kwargs.get('pk', None))
+        return get_object_or_404(Scale, slug=self.kwargs.get('slug', None))

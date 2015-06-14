@@ -130,11 +130,11 @@ class ScaleDetail(TestCase):
         self.scale.save()
 
     def test_detail_return_200(self):
-        response = self.client.get('/scales/{0}/'.format(self.scale.id))
+        response = self.client.get('/scales/{0}/'.format(self.scale.slug))
         self.assertEquals(200, response.status_code)
 
     def test_detail_template(self):
-        response = self.client.get('/scales/{0}/'.format(self.scale.id))
+        response = self.client.get('/scales/{0}/'.format(self.scale.slug))
         self.assertTemplateUsed(response, 'scales/detail.html')
 
     def test_detail_return_404(self):
