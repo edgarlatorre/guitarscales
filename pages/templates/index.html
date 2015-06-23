@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <title>{{ scale.key }} {{ scale.name }}</title>
+  </head>
+  <body>
+    <h1>Choose a scale:</h1>
+    <select name="scale-id" id="scale-id" value="Select">
+      <option disabled="disabled" selected>Select scale</option>
+      {% for scale in scales %}
+        <option value="{{ scale.slug }}">
+          {{ scale }}
+        </option>
+      {% endfor %}
+    </select>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $("#scale-id").on("change", function(){
+          window.location.href = "/scales/" + $(this).val();
+        });
+    </script>
+  </body>
+</html>
